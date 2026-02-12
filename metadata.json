@@ -1,0 +1,7 @@
+{
+  "name": "Megh - A Promise Day Surprise",
+  "description": "A beautiful, interactive friendship celebration website for Megh (Mim), featuring a live countdown, snap-scroll transitions, and deep Gemini Pro AI intelligence.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Megh - Promise Day Surprise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            screens: {
+              'xs': '400px',
+            },
+            animation: {
+              'spin-slow': 'spin 12s linear infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'cloud-slide': 'cloudSlide 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards',
+              'heart-rain': 'heartRain 3s linear infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0) rotate(0)' },
+                '50%': { transform: 'translateY(-20px) rotate(2deg)' },
+              },
+              cloudSlide: {
+                '0%': { opacity: '0', transform: 'translateY(20px) scale(0.98)' },
+                '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+              },
+              heartRain: {
+                '0%': { transform: 'translateY(-10vh) rotate(0deg)', opacity: '1' },
+                '100%': { transform: 'translateY(110vh) rotate(360deg)', opacity: '0' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Hind+Siliguri:wght@300;400;600;700&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --vh: 100vh;
+        --warm-hug: #ffebd2;
+      }
+      body {
+        font-family: 'Inter', 'Hind Siliguri', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #fdfcfb;
+        overscroll-behavior-y: none;
+        overflow: hidden;
+        width: 100vw;
+        color: #1a1a1a;
+        touch-action: manipulation;
+      }
+      
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.02;
+        z-index: 1000;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      .font-romantic { font-family: 'Dancing Script', cursive; }
+      .font-handwriting { font-family: 'Caveat', cursive; }
+      
+      .page-deck {
+        height: 100vh;
+        height: var(--vh);
+        width: 100vw;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page-content {
+        height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 120px;
+        padding-top: env(safe-area-inset-top, 20px);
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+      }
+
+      .perspective-1000 { perspective: 1000px; }
+      .transform-style-3d { transform-style: preserve-3d; }
+      .backface-hidden { backface-visibility: hidden; }
+      .rotate-y-180 { transform: rotateY(180deg); }
+
+      .custom-scrollbar::-webkit-scrollbar { width: 3px; }
+      .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(0,0,0,0.05);
+        border-radius: 10px;
+      }
+
+      /* Prevent text selection during hold */
+      .select-none {
+        -webkit-user-select: none;
+        user-select: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "canvas-confetti": "https://esm.sh/canvas-confetti@^1.9.4"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const resetHeight = () => {
+        document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
+      }
+      window.addEventListener('resize', resetHeight);
+      window.addEventListener('orientationchange', () => setTimeout(resetHeight, 150));
+      resetHeight();
+    </script>
+  </body>
+</html>
